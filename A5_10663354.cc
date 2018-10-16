@@ -2,11 +2,11 @@
 #include <fstream>
 #include <string>
 
+
+
 using namespace std;
 
 struct Student{
-
-
 string idNumber;
 string name;
 int age;
@@ -29,73 +29,93 @@ int  femaleCount = 0;
 int i;
 
 
-  Student s[2];
+  Student s[5];
  
-for (int i = 0; i <= 1; i++)
+for (int i = 0; i <=4 ; i++)
 {
 
 
- cout << "Enter your Id number";
+ cout << "Enter your Id number :";
  cin >> s[i].idNumber;
 
 
- cout << "Enter your name";
+ cout << "Enter your name :";
  cin >> s[i].name;
 
 
- cout << "Enter age";
+ cout << "Enter age :";
  cin >> s[i].age;
-
-while (true) 
-
+ 
+ while (true)
 {
  cout << "Enter student's gender: ";
  cin >> s[i].gender;
+ 
+ 
  
 if (s[i].gender == "Male" )
  break;
 
 if (s[i]. gender == "Female" )
  break;
-
 }
- while (true)
+
+
 
 {
 
- cout << "Enter score";
+ cout << "Enter score : ";
  cin >> s[i].score;
 
 
+
+
+
  if(s[i]. score > 80  && s[i]. score  <=100  )
+ 
+ {
+ 
  s[i].grade = 'A' ;
  cout << "Excellent" ;
+}
 
-break;
 
- if (s[i].score >=70  && s[i]. score  < 79)
+  else if (s[i].score >=70  && s[i]. score  < 79)
+  {
+  
   s[i].grade = 'B' ;
  cout << " Good job";
-
- if (s[i].score  >= 60 && s[i]. score  < 69)
+}
+ else if (s[i].score  >= 60 && s[i]. score  < 69)
+ {
+ 
   s[i].grade = 'C' ;
  cout << "Good";
+}
 
-
- if  (s[i].score >= 50 && s[i]. score  < 59)
+ else if  (s[i].score >= 50 && s[i]. score  < 59)
+ {
+ 
    s[i].grade = 'D' ;
  cout << " You can do better " ;
+}
 
-
- if  (s[i].score >= 40 && s[i]. score  < 49)
+ else if  (s[i].score >= 40 && s[i]. score  < 49)
+ {
+ 
   s[i].grade = 'E' ;
 cout << "Credit";
 
+}
 
-if (s[i].score  >= 39 && s[i].score < 0)
+else
+  
+{
 
   s[i].grade = 'F' ;
 cout << "Fail";
+}
+
 }
 total_age += s[i].age;
 
@@ -115,32 +135,56 @@ cout << endl << endl;
 
 
 }
-fstream myfile;
 
-myfile.open( "message.txt", ios::out);
-for (int i=0; i <= 1; i++)
+
+
+cout << "ID NUMBER | NAME |AGE| GENDER | SCORE | GRADE \n" ; 
+
+for (int i=0; i <=4 ; i++)
+{
+
+cout << i+1 << ". ";        cout <<s[i].idNumber << " ";         cout << s[i].name << " ";        cout << s[i].age << " ";         cout << s[i].gender << " ";         cout << s[i].score<< " ";      cout << s[i].grade << endl;
+}
+
+cout << endl << "Average age :  " << total_age / 5 << endl;
+cout << " Average score : " << total_score / 5 << endl;
+cout << "Male count :" << maleCount << endl;
+cout << "Female count :" << femaleCount << endl;
+
+
+
+
+
+
+fstream aStudent;
+
+aStudent.open( "thestudent.txt", ios::out);
+for (int i=0; i <= 4; i++)
 
 {
- myfile << i+1 << ". ";
-myfile <<s[i].idNumber << " ";
-myfile << s[i].name << " ";
- myfile << s[i].age << " ";
-myfile << s[i].gender << " ";
-myfile << s[i].score<< " ";
-myfile << s[i].grade << endl;
+ aStudent << i+1 << ". ";
+aStudent <<s[i].idNumber << " ";
+aStudent<< s[i].name << " ";
+ aStudent << s[i].age << " ";
+aStudent << s[i].gender << " ";
+aStudent << s[i].score<< " ";
+aStudent<< s[i].grade << endl;
 
-cout << "The record inputed " << i+1 << "is done ." << endl;
+
 
 }
 
-myfile << endl << "Average age :  " << total_age / 5 << endl;
-myfile << " Average score : " << total_score / 5 << endl;
-myfile << "Male count :" << maleCount << endl;
-myfile << "Female count :" << femaleCount << endl;
+aStudent << endl << "Average age :  " << total_age / 5 << endl;
+aStudent << " Average score : " << total_score / 5 << endl;
+aStudent << "Male count :" << maleCount << endl;
+aStudent<< "Female count :" << femaleCount << endl;
 
 return 0;
 
 }
+
+
+
 
 # edwin123
 # edwin123
